@@ -1,6 +1,6 @@
 # Sauced
 
-**Sauced** is an add-on for [Burgered](),
+**Sauced** is an add-on for [Burgered](https://github.com/wired-tomato/burgered),
 a mod which adds buildable burgers to the game.
 
 Sauced allows you to cook Potions down into sauces which you can put onto these
