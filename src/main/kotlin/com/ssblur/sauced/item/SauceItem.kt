@@ -11,12 +11,12 @@ import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.level.Level
 import net.wiredtomato.burgered.api.Burger
 import net.wiredtomato.burgered.api.ingredient.BurgerIngredient
+import net.wiredtomato.burgered.api.rendering.IngredientRenderSettings
 import net.wiredtomato.burgered.init.BurgeredDataComponents
+import org.joml.Vector3d
 
 class SauceItem(properties: Properties) : Item(properties), BurgerIngredient {
     override fun canBePutOn(stack: ItemStack, burger: Burger): Boolean = true
-
-    override fun modelHeight(stack: ItemStack): Double = 1.0
 
     override fun onEat(entity: LivingEntity, world: Level, stack: ItemStack, component: FoodProperties) {
         val burger = stack.get(BurgeredDataComponents.BURGER)
@@ -29,6 +29,9 @@ class SauceItem(properties: Properties) : Item(properties), BurgerIngredient {
     }
 
     override fun overSaturation(stack: ItemStack): Double = 0.0
+
+    override fun renderSettings(stack: ItemStack) =
+        IngredientRenderSettings.ItemModel3d(Vector3d(1.0, 1.0, 1.0), Vector3d(0.0, 0.0, 0.0), 1.0)
 
     override fun saturation(stack: ItemStack): Int = 0
 
