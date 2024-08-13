@@ -2,6 +2,7 @@ package com.ssblur.sauced.item
 
 import net.minecraft.core.component.DataComponents
 import net.minecraft.network.chat.Component
+import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.food.FoodProperties
 import net.minecraft.world.food.FoodProperties.PossibleEffect
@@ -23,7 +24,7 @@ class SauceItem(properties: Properties) : Item(properties), BurgerIngredient {
         burger?.ingredients()?.forEach { pair ->
             if(pair.first.item is SauceItem)
                 pair.first.get(DataComponents.POTION_CONTENTS)?.allEffects?.forEach { effect ->
-                    entity.addEffect(effect)
+                    entity.addEffect(MobEffectInstance(effect.effect, effect.duration, effect.amplifier))
                 }
         }
     }
