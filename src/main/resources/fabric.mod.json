@@ -20,11 +20,24 @@
 				"value": "com.ssblur.sauced.Sauced",
 				"adapter": "kotlin"
 			}
+		],
+		"jei_mod_plugin": [
+			{
+				"value": "com.ssblur.sauced.integration.jei.SaucedJEIIntegration",
+				"adapter": "kotlin"
+			}
+		],
+		"emi": [
+			{
+				"value": "com.ssblur.sauced.integration.emi.SaucedEMIIntegration",
+				"adapter": "kotlin"
+			}
 		]
 	},
 	"mixins": [
 		"sauced.mixins.json"
 	],
+	"accessWidener": "sauced.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.21",
