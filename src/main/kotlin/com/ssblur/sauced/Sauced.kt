@@ -27,7 +27,8 @@ object Sauced : ModInitializer {
 
         if(Platform.getEnv() == EnvType.CLIENT) {
             ColorProviderRegistry.ITEM.register({ stack, layer ->
-                stack.get(DataComponents.POTION_CONTENTS)?.color ?: 0xFFFFFF
+                if(layer == 0) stack.get(DataComponents.POTION_CONTENTS)?.color ?: 0xFFFFFFFFu.toInt()
+                else 0xFFFFFFFFu.toInt()
             }, SAUCE_ITEM)
         }
 	}
