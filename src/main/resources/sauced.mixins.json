@@ -3,6 +3,7 @@
   "package": "com.ssblur.sauced.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BrewingOutputAccessor",
     "PotionBrewingMixin"
   ],
   "injectors": {
