@@ -50,12 +50,10 @@ repositories {
 }
 
 loom {
-	splitEnvironmentSourceSets()
 
 	mods {
 		"sauced" {
 			sourceSet sourceSets.main
-			sourceSet sourceSets.client
 		}
 	}
 
@@ -72,7 +70,7 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
 
   // Burgered.
-  modImplementation "net.wiredtomato:burgered-fabric:0.1.0-beta.2-SNAPSHOT"
+  modImplementation "net.wiredtomato:burgered-fabric:${project.burgered_version}-SNAPSHOT"
 }
 
 processResources {

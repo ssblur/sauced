@@ -3,9 +3,9 @@
 	"id": "sauced",
 	"version": "${version}",
 	"name": "Sauced",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Mmmm... burger...",
 	"authors": [
-		"Me!"
+		"SSBlur"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -20,20 +20,10 @@
 				"value": "com.ssblur.sauced.Sauced",
 				"adapter": "kotlin"
 			}
-		],
-		"client": [
-			{
-				"value": "com.ssblur.sauced.SaucedClient",
-				"adapter": "kotlin"
-			}
 		]
 	},
 	"mixins": [
-		"sauced.mixins.json",
-		{
-			"config": "sauced.client.mixins.json",
-			"environment": "client"
-		}
+		"sauced.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
@@ -42,7 +32,5 @@
 		"fabric-api": "*",
 		"fabric-language-kotlin": "*"
 	},
-	"suggests": {
-		"another-mod": "*"
-	}
+	"suggests": {}
 }
