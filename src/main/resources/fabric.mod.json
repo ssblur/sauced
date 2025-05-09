@@ -4,9 +4,7 @@
 	"version": "${version}",
 	"name": "Sauced",
 	"description": "Mmmm... burger...",
-	"authors": [
-		"SSBlur"
-	],
+	"authors": [ "SSBlur", "TheEnderCore" ],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
