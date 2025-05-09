@@ -1,35 +1,37 @@
 package com.ssblur.sauced.integration.jei
 
+import com.ssblur.alchimiae.item.AlchimiaeItems
 import com.ssblur.sauced.Sauced
 import com.ssblur.sauced.Sauced.location
-import com.ssblur.sauced.mixin.BrewingOutputAccessor
 import mezz.jei.api.IModPlugin
+import mezz.jei.api.JeiPlugin
 import mezz.jei.api.constants.RecipeTypes
 import mezz.jei.api.registration.IRecipeRegistration
-import net.minecraft.client.Minecraft
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Items
-import net.minecraft.world.item.alchemy.PotionBrewing
 import net.minecraft.world.item.alchemy.PotionContents.createItemStack
+import net.minecraft.world.item.alchemy.Potions
 
+@JeiPlugin
 class SaucedJEIIntegration : IModPlugin {
     override fun getPluginUid(): ResourceLocation = location("sauced")
 
     override fun registerRecipes(registration: IRecipeRegistration) {
-        val brewingRegistry =
-            (Minecraft.getInstance().level?.potionBrewing() ?: PotionBrewing.EMPTY) as BrewingOutputAccessor
-        if (brewingRegistry.potionRecipes.isEmpty()) return
         registration.addRecipes(
-            RecipeTypes.BREWING,
-            brewingRegistry.potionRecipes.map { it.to }.toSet().map { potion ->
+            RecipeTypes.BREWING, listOf(
                 registration.vanillaRecipeFactory.createBrewingRecipe(
                     listOf(Items.EGG.defaultInstance),
-                    createItemStack(Items.POTION, potion),
-                    createItemStack(Sauced.SAUCE_ITEM, potion),
-                    location("brewing/sauce/${potion.registeredName.replace(":", "/")}")
+                    createItemStack(Items.POTION, Potions.HEALING),
+                    createItemStack(Sauced.SAUCE_ITEM, Potions.HEALING),
+                    location("/brewing/sauce")
+                ),
+                registration.vanillaRecipeFactory.createBrewingRecipe(
+                    listOf(Items.EGG.defaultInstance),
+                    createItemStack(AlchimiaeItems.POTION.get(), Potions.HEALING),
+                    createItemStack(Sauced.SAUCE_ITEM, Potions.HEALING),
+                    location("/brewing/sauce_from_brew")
                 )
-            }
+            )
         )
     }
-
 }

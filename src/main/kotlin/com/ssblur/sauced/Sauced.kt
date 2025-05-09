@@ -1,5 +1,6 @@
 package com.ssblur.sauced
 
+import com.ssblur.alchimiae.AlchimiaeMod
 import com.ssblur.sauced.item.SauceItem
 import dev.architectury.platform.Platform
 import net.fabricmc.api.EnvType
@@ -12,12 +13,15 @@ import net.minecraft.world.item.Item
 import org.slf4j.LoggerFactory
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry
 import net.minecraft.world.item.alchemy.PotionContents
+import org.slf4j.Logger
 
 
 object Sauced : ModInitializer {
-    val MOD_ID = "sauced"
-    val LOGGER = LoggerFactory.getLogger(MOD_ID)
+    const val MOD_ID = "sauced"
+    const val ALCHIMIAE = "alchimiae"
+    val LOGGER: Logger = LoggerFactory.getLogger(MOD_ID)
 
+    @JvmField
     val SAUCE_ITEM = SauceItem(Item.Properties().component(DataComponents.POTION_CONTENTS, PotionContents.EMPTY))
 
 	override fun onInitialize() {
