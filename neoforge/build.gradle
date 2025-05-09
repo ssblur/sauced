@@ -44,7 +44,7 @@ dependencies {
   modImplementation("com.ssblur.unfocused:unfocused-neoforge:${rootProject.unfocused_version}")
 
   // Achimiae
-  modImplementation("maven.modrinth:alchimiae-magicae:${rootProject.alchimiae_version}-neoforge")
+  runtimeOnly("maven.modrinth:alchimiae-magicae:${rootProject.alchimiae_version}-neoforge")
   // Burgered.
   modImplementation("net.wiredtomato:burgered-neoforge:${rootProject.burgered_version}-SNAPSHOT")
 
