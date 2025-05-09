@@ -1,0 +1,38 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+issueTrackerURL = "https://github.com/ssblur/sauced/issues"
+license = "CC0-1.0"
+
+[[mods]]
+modId = "sauced"
+version = "${version}"
+displayName = "Sauced"
+authors = "SSBlur, TheEnderCore"
+description = '''
+Mmmm... burger...
+'''
+logoFile = "assets/sauced/icon.png"
+
+[[dependencies.sauced]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.sauced]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.sauced]]
+modId = "unfocused"
+type = "required"
+versionRange = "[${unfocused_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "sauced.mixins.json"

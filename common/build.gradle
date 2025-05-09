@@ -1,0 +1,33 @@
+plugins {
+  id 'org.jetbrains.kotlin.jvm'
+}
+architectury {
+    common rootProject.enabled_platforms.split(',')
+}
+
+dependencies {
+  // We depend on Fabric Loader here to use the Fabric @Environment annotations,
+  // which get remapped to the correct annotations on each platform.
+  // Do NOT use other classes from Fabric Loader.
+  modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+  modCompileOnlyApi("com.ssblur.unfocused:unfocused-common:${rootProject.unfocused_version}")
+
+  // Achimiae
+  modCompileOnlyApi("maven.modrinth:alchimiae-magicae:${rootProject.alchimiae_version}-fabric")
+  // Burgered.
+  modCompileOnlyApi("net.wiredtomato:burgered-common:${rootProject.burgered_version}-SNAPSHOT")
+
+  // JEI
+  modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${rootProject.jei_version}")
+  // EMI
+  modCompileOnlyApi "dev.emi:emi-xplat-intermediary:${emi_version}:api"
+
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+repositories {
+  mavenCentral()
+}
+kotlin {
+  jvmToolchain(21)
+}

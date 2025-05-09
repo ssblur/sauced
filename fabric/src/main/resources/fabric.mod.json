@@ -13,18 +13,8 @@
 	"icon": "assets/sauced/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			{
-				"value": "com.ssblur.sauced.SaucedFabric",
-				"adapter": "kotlin"
-			}
-		],
-		"client": [
-			{
-				"value": "com.ssblur.sauced.SaucedFabric",
-				"adapter": "kotlin"
-			}
-		],
+		"main": [ "com.ssblur.sauced.SaucedFabric" ],
+		"client": [ "com.ssblur.sauced.SaucedFabric" ],
 		"jei_mod_plugin": [
 			{
 				"value": "com.ssblur.sauced.integration.jei.SaucedJEIIntegration",
@@ -41,13 +31,13 @@
 	"mixins": [
 		"sauced.mixins.json"
 	],
-	"accessWidener": "sauced.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.21",
 		"java": ">=21",
 		"fabric-api": "*",
-		"fabric-language-kotlin": "*"
+		"fabric-language-kotlin": "*",
+		"unfocused": ">=${unfocused_version}"
 	},
 	"suggests": {}
 }

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory
 
 
 object Sauced : ModInitializer("sauced") {
+    const val MODID = "sauced"
     @JvmField
     val LOGGER: Logger = LoggerFactory.getLogger(id)
 
@@ -20,10 +21,12 @@ object Sauced : ModInitializer("sauced") {
         SauceItem(Item.Properties().component(DataComponents.POTION_CONTENTS, PotionContents.EMPTY))
     }
 
+    @JvmStatic
     fun init() {
         LOGGER.info("Loading Sauced for Burgered")
     }
 
+    @JvmStatic
     fun clientInit() {
         SAUCE_ITEM.registerColor(SauceItem::getColor)
     }
