@@ -1,9 +1,9 @@
 package com.ssblur.sauced.integration.emi.recipes
 
-import com.ssblur.sauced.integration.emi.SaucedEMIIntegration
 import dev.emi.emi.api.recipe.EmiRecipe
 import dev.emi.emi.api.recipe.EmiRecipeCategory
 import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories
+import dev.emi.emi.api.stack.EmiIngredient
 import dev.emi.emi.api.stack.EmiStack
 import dev.emi.emi.api.widget.SlotWidget
 import dev.emi.emi.api.widget.WidgetHolder
@@ -11,9 +11,10 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Items
+import java.util.*
 
-abstract class CustomBrewingRecipe(private val id: ResourceLocation, val ingredient: EmiStack) : EmiRecipe {
-    protected val unique: Int = SaucedEMIIntegration.Companion.RANDOM.nextInt()
+abstract class CustomBrewingRecipe(private val id: ResourceLocation, val ingredient: EmiIngredient) : EmiRecipe {
+    protected val unique: Int = RANDOM.nextInt()
     override fun getCategory(): EmiRecipeCategory = VanillaEmiRecipeCategories.BREWING
     override fun getId(): ResourceLocation = id
     override fun getDisplayWidth(): Int = 120
@@ -40,5 +41,6 @@ abstract class CustomBrewingRecipe(private val id: ResourceLocation, val ingredi
         private val BLAZE_POWDER = EmiStack.of(Items.BLAZE_POWDER)
         private val COOKING_TIME =
             ClientTooltipComponent.create(Component.translatable("emi.cooking.time", 20).visualOrderText)
+        val RANDOM = Random()
     }
 }

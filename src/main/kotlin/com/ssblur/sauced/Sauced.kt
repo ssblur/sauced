@@ -1,41 +1,32 @@
 package com.ssblur.sauced
 
-import com.ssblur.alchimiae.AlchimiaeMod
 import com.ssblur.sauced.item.SauceItem
-import dev.architectury.platform.Platform
-import net.fabricmc.api.EnvType
-import net.fabricmc.api.ModInitializer
-import net.minecraft.core.Registry
+import com.ssblur.unfocused.ModInitializer
+import com.ssblur.unfocused.Unfocused
+import com.ssblur.unfocused.helper.ColorHelper.registerColor
 import net.minecraft.core.component.DataComponents
-import net.minecraft.core.registries.BuiltInRegistries
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Item
-import org.slf4j.LoggerFactory
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry
 import net.minecraft.world.item.alchemy.PotionContents
 import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 
-object Sauced : ModInitializer {
-    const val MOD_ID = "sauced"
-    const val ALCHIMIAE = "alchimiae"
-    val LOGGER: Logger = LoggerFactory.getLogger(MOD_ID)
+object Sauced : ModInitializer("sauced") {
+    @JvmField
+    val LOGGER: Logger = LoggerFactory.getLogger(id)
 
     @JvmField
-    val SAUCE_ITEM = SauceItem(Item.Properties().component(DataComponents.POTION_CONTENTS, PotionContents.EMPTY))
+    val SAUCE_ITEM = registerItem("sauce") {
+        SauceItem(Item.Properties().component(DataComponents.POTION_CONTENTS, PotionContents.EMPTY))
+    }
 
-	override fun onInitialize() {
+    fun init() {
         LOGGER.info("Loading Sauced for Burgered")
+    }
 
-        Registry.register(BuiltInRegistries.ITEM, location("sauce"), SAUCE_ITEM)
+    fun clientInit() {
+        SAUCE_ITEM.registerColor(SauceItem::getColor)
+    }
 
-        if(Platform.getEnv() == EnvType.CLIENT) {
-            ColorProviderRegistry.ITEM.register({ stack, layer ->
-                if(layer == 0) stack.get(DataComponents.POTION_CONTENTS)?.color ?: 0xFFFFFFFFu.toInt()
-                else 0xFFFFFFFFu.toInt()
-            }, SAUCE_ITEM)
-        }
-	}
-
-    fun location(name: String) : ResourceLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, name)
+    fun hasAlchimiae() = Unfocused.isModLoaded("alchimiae")
 }

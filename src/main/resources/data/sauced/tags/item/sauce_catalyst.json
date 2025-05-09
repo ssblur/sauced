@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:egg",
+    {
+      "id": "#c:eggs",
+      "required": false
+    }
+  ]
+}

@@ -17,7 +17,13 @@
 	"entrypoints": {
 		"main": [
 			{
-				"value": "com.ssblur.sauced.Sauced",
+				"value": "com.ssblur.sauced.SaucedFabric",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "com.ssblur.sauced.SaucedFabric",
 				"adapter": "kotlin"
 			}
 		],

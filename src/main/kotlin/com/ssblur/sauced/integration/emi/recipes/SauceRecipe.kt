@@ -1,6 +1,7 @@
 package com.ssblur.sauced.integration.emi.recipes
 
 import com.ssblur.sauced.Sauced
+import com.ssblur.sauced.data.SaucedTags
 import dev.emi.emi.api.stack.EmiIngredient
 import dev.emi.emi.api.stack.EmiStack
 import dev.emi.emi.api.widget.GeneratedSlotWidget
@@ -15,9 +16,9 @@ import kotlin.jvm.optionals.getOrNull
 
 open class SauceRecipe(
     id: ResourceLocation,
-    val input: EmiIngredient = POTIONS,
-    private val output: EmiStack = EmiStack.of(Sauced.SAUCE_ITEM)
-) : CustomBrewingRecipe(id, EmiStack.of(Items.EGG)) {
+    val input: EmiStack = EmiStack.of(Items.POTION),
+    private val output: EmiStack = EmiStack.of(Sauced.SAUCE_ITEM.get())
+) : CustomBrewingRecipe(id, EmiIngredient.of(SaucedTags.SAUCE_CATALYST)) {
     override fun getInputs(): List<EmiIngredient> = listOf(ingredient) + getInputIngredient().copy().setAmount(3)
     override fun getOutputs(): List<EmiStack> = listOf(output.copy().setAmount(3))
 
@@ -41,10 +42,5 @@ open class SauceRecipe(
                         .map { PotionContents.createItemStack(it.itemStack.item, potion) }
                 })
         )
-    }
-
-    companion object {
-        val POTIONS: EmiIngredient =
-            EmiIngredient.of(Ingredient.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION))
     }
 }

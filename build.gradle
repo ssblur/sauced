@@ -75,7 +75,8 @@ dependencies {
   // Unfocused
   modImplementation("com.ssblur.unfocused:unfocused-fabric:${project.unfocused_version}")
   // Achimiae
-  modImplementation("maven.modrinth:alchimiae-magicae:${project.alchimiae_version}")
+  modCompileOnlyApi("maven.modrinth:alchimiae-magicae:${project.alchimiae_version}")
+  modRuntimeOnly("maven.modrinth:alchimiae-magicae:${project.alchimiae_version}")
 
   // Burgered.
   modImplementation "net.wiredtomato:burgered-fabric:${project.burgered_version}-SNAPSHOT"
