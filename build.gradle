@@ -86,6 +86,17 @@ subprojects {
     repositories {
     }
   }
+
+  processResources {
+    inputs.property 'version', project.version
+
+    filesMatching(['fabric.mod.json', 'META-INF/neoforge.mods.toml']) {
+      expand(
+              version: project.version,
+              unfocused_version: rootProject.unfocused_version
+      )
+    }
+  }
 }
 repositories {
   mavenCentral()

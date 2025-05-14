@@ -46,17 +46,6 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
-processResources {
-  inputs.property 'version', project.version
-
-  filesMatching('fabric.mod.json') {
-    expand(
-      version: project.version,
-      unfocused_version: rootProject.unfocused_version
-    )
-  }
-}
-
 shadowJar {
   exclude "architectury.common.json"
 

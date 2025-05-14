@@ -57,17 +57,6 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
-processResources {
-  inputs.property 'version', project.version
-
-  filesMatching('META-INF/neoforge.mods.toml') {
-    expand(
-      version: project.version,
-      unfocused_version: rootProject.unfocused_version
-    )
-  }
-}
-
 shadowJar {
   configurations = [project.configurations.shadowBundle]
   archiveClassifier = 'dev-shadow'
