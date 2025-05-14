@@ -93,7 +93,9 @@ subprojects {
     filesMatching(['fabric.mod.json', 'META-INF/neoforge.mods.toml']) {
       expand(
               version: project.version,
-              unfocused_version: rootProject.unfocused_version
+              minecraft_version: rootProject.minecraft_version,
+              unfocused_version: rootProject.unfocused_version,
+              fabric_loader_version: rootProject.fabric_loader_version
       )
     }
   }
