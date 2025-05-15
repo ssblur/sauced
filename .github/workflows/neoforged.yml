@@ -42,6 +42,7 @@ jobs:
           changelog: ${{ steps.changelog.outputs.changelog }}
           dependencies: |
             unfocused
+            burgered
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
